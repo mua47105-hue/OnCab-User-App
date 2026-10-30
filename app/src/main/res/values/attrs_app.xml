@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App-specific attrs (library attrs are provided by the AAR dependencies;
+         this file keeps only what the original app itself defined). -->
+
+    <!-- Original app alias used by Theme.CabBookDriver -->
+    <attr name="colorBackground" format="color" />
+
+    <!-- chaos PinView attrs (vendored view; jcenter library unavailable) -->
+    <attr name="cursorColor" format="reference|color" />
+    <attr name="cursorWidth" format="dimension" />
+    <attr name="hideLineWhenFilled" format="boolean" />
+    <attr name="itemCount" format="integer" />
+    <attr name="itemHeight" format="dimension" />
+    <attr name="itemRadius" format="dimension" />
+    <attr name="itemSpacing" format="dimension" />
+    <attr name="itemWidth" format="dimension" />
+    <attr name="lineColor" format="reference|color" />
+    <attr name="lineWidth" format="dimension" />
+    <attr name="animationEnable" format="boolean" />
+    <attr name="pinViewStyle" format="reference" />
+    <attr name="viewType">
+        <enum name="rectangle" value="0" />
+        <enum name="line" value="1" />
+        <enum name="none" value="2" />
+    </attr>
+
+    <declare-styleable name="PinView">
+        <attr name="viewType" />
+        <attr name="itemCount" />
+        <attr name="itemWidth" />
+        <attr name="itemHeight" />
+        <attr name="itemRadius" />
+        <attr name="itemSpacing" />
+        <attr name="lineColor" />
+        <attr name="lineWidth" />
+        <attr name="cursorColor" />
+        <attr name="cursorWidth" />
+        <attr name="hideLineWhenFilled" />
+        <attr name="animationEnable" />
+    </declare-styleable>
+
+    <attr name="pinViewStyle" format="reference" />
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TextView
+        android:textSize="11sp"
+        android:textColor="@color/white"
+        android:ellipsize="end"
+        android:id="@+id/tvMarkerAddress"
+        android:background="@drawable/bg_black_rounded_small"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:maxLines="1"
+        android:fontFamily="@font/roboto_bold"
+        android:backgroundTint="#e6000000"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp"/>
+    <ImageView
+        android:layout_width="12dp"
+        android:layout_height="8dp"
+        android:layout_marginTop="-2dp"
+        android:src="@drawable/down_arrow"
+        app:tint="#e6000000"/>
+    <ImageView
+        android:id="@+id/ivMarkerIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="2dp"
+        android:src="@drawable/marker"/>
+</LinearLayout>

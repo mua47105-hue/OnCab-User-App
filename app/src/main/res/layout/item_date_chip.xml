@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardDateChip"
+    android:layout_width="wrap_content"
+    android:layout_height="38dp"
+    android:layout_marginLeft="4dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginRight="4dp"
+    android:layout_marginBottom="6dp"
+    android:layout_marginHorizontal="4dp"
+    android:layout_marginVertical="6dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="19dp"
+    app:cardElevation="0dp"
+    app:strokeColor="#e2e8f0"
+    app:strokeWidth="1dp">
+    <TextView
+        android:textSize="12sp"
+        android:textColor="#475569"
+        android:gravity="center"
+        android:id="@+id/tvDateShort"
+        android:paddingLeft="14dp"
+        android:paddingRight="14dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:fontFamily="@font/roboto_medium"
+        android:paddingHorizontal="14dp"/>
+</com.google.android.material.card.MaterialCardView>

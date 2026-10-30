@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="SecondaryTextColor">#ffcccccc</color>
+    <color name="adaptive_on_surface">#ffffffff</color>
+    <color name="adaptive_surface">#ff121212</color>
+    <color name="background_gray">#ff121212</color>
+    <color name="black_text_01">#ffeeeeee</color>
+    <color name="blue_white">#ff1e1e1e</color>
+    <color name="button_background_color">#ffffffff</color>
+    <color name="button_text">#ff000000</color>
+    <color name="colorBackground">#ff121212</color>
+    <color name="colorOnBackground">#ffffffff</color>
+    <color name="colorOnSurface">#ffffffff</color>
+    <color name="colorOnSurfaceVariant">#ffcac4d0</color>
+    <color name="colorSurface">#ff121212</color>
+    <color name="colorSurfaceVariant">#ff49454f</color>
+    <color name="gray_02">#ffbbbbbb</color>
+    <color name="grey">#ffbbbbbb</color>
+    <color name="grey_black">#ffbbbbbb</color>
+    <color name="hintColor">#ff888888</color>
+    <color name="lightGray">#ff333333</color>
+    <color name="my_color_primary">@color/purple_200</color>
+    <color name="my_status_bar_color">#ff000000</color>
+    <color name="new_gray">#ffbbbbbb</color>
+    <color name="primaryTextColor">#ffffffff</color>
+    <color name="referral_card_bg">#ff1e222b</color>
+    <color name="textColorDarkGray">#ffeeeeee</color>
+    <color name="veryLightGray">#ff1e1e1e</color>
+    <color name="very_light_gary">#ff1e1e1e</color>
+</resources>

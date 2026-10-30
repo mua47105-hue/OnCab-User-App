@@ -1,0 +1,97 @@
+name: Build and Release OnCab
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build APKs (GitHub-hosted Gradle build)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle 8.11.1
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.11.1'
+
+      - name: Assemble debug and release APKs
+        run: gradle assembleDebug assembleRelease --no-daemon --stacktrace
+
+      - name: Verify APK outputs
+        run: |
+          set -e
+          ls -la app/build/outputs/apk/debug/
+          ls -la app/build/outputs/apk/release/
+          for apk in app/build/outputs/apk/debug/*.apk app/build/outputs/apk/release/*.apk; do
+            test -s "$apk" || { echo "MISSING/EMPTY APK: $apk"; exit 1; }
+          done
+          echo "--- APK binary check ---"
+          file app/build/outputs/apk/release/*.apk
+
+      - name: Upload APK artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: OnCab-apks
+          path: |
+            app/build/outputs/apk/debug/*.apk
+            app/build/outputs/apk/release/*.apk
+          if-no-files-found: error
+          retention-days: 30
+
+  release:
+    name: Attach APK to GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download built APKs
+        uses: actions/download-artifact@v4
+        with:
+          name: OnCab-apks
+          path: apks
+
+      - name: Prepare release assets
+        run: |
+          mkdir -p rel
+          cp apks/debug/*.apk   rel/OnCab-v1.10.25-debug.apk
+          cp apks/release/*.apk rel/OnCab-v1.10.25-release.apk
+          ls -la rel/
+
+      - name: Create/Update GitHub Release v1.10.25
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.10.25
+          name: OnCab User App v1.10.25
+          body: |
+            ## OnCab User App — v1.10.25 (versionCode 40)
+
+            Full rebuild of the OnCab user application (package `com.oncab.user`),
+            restored end-to-end from the decompiled release APK using the REA skill
+            and verified through the Gauntlet Loop.
+
+            - Package: `com.oncab.user`
+            - Version: 1.10.25 (40)
+            - Original resources, layouts, themes, icons and fonts bundled verbatim
+            - Auth flow: otp-send → user-login → user-create → home
+            - Home map, ride history (All/City/Outstation/Rental/Delivery),
+              bus trips (Upcoming/Completed/Cancelled), profile & settings
+            - Built on GitHub Actions (Gradle 8.11.1, AGP 8.9.2, JDK 17)
+
+            **Install:** download `OnCab-v1.10.25-release.apk` and enable
+            "Install unknown apps" for the installer you use.
+          files: |
+            rel/OnCab-v1.10.25-debug.apk
+            rel/OnCab-v1.10.25-release.apk
+          make_latest: true
+          fail_on_unmatched_files: true

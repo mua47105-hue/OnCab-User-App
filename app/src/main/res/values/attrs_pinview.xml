@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- chaos PinView styleable (library attrs already defined globally in attrs.xml) -->
+    <attr name="animationEnable" format="boolean" />
+
+    <declare-styleable name="PinView">
+        <attr name="viewType" />
+        <attr name="itemCount" />
+        <attr name="itemWidth" />
+        <attr name="itemHeight" />
+        <attr name="itemRadius" />
+        <attr name="itemSpacing" />
+        <attr name="lineColor" />
+        <attr name="lineWidth" />
+        <attr name="cursorColor" />
+        <attr name="cursorWidth" />
+        <attr name="hideLineWhenFilled" />
+        <attr name="animationEnable" />
+    </declare-styleable>
+</resources>

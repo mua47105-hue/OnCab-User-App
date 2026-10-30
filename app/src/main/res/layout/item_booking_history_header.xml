@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:textSize="14sp"
+    android:textColor="#999999"
+    android:id="@+id/tvHeaderDate"
+    android:paddingLeft="4dp"
+    android:paddingTop="24dp"
+    android:paddingRight="4dp"
+    android:paddingBottom="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="26 AUG 2026"
+    android:textAllCaps="true"
+    android:fontFamily="@font/roboto_bold"
+    android:letterSpacing="0.05"
+    android:paddingHorizontal="4dp"/>

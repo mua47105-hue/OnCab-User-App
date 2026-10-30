@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardBackgroundColor="?attr/colorSurfaceVariant"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="0dp">
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/avatar_1"
+            app:civ_border_color="@color/grey"
+            app:civ_border_width="1dp"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp">
+            <TextView
+                android:textSize="16sp"
+                android:textColor="?attr/colorOnSurface"
+                android:id="@+id/tvReferrerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User 1"
+                android:fontFamily="@font/roboto_medium"/>
+            <TextView
+                android:textSize="12sp"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:id="@+id/tvReferralDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Joined on 08 Jul, 2026"/>
+        </LinearLayout>
+        <TextView
+            android:textSize="16sp"
+            android:textColor="#3fa543"
+            android:id="@+id/tvRewardAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+₹50"
+            android:fontFamily="@font/roboto_bold"/>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

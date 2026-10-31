@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Rebuilt: decompile artifact removed the original with a raw hex fill.
+     Messenger send button background, facebook-blue rounded pill. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="#0084ff" />
+    <corners android:radius="4dp" />
+</shape>

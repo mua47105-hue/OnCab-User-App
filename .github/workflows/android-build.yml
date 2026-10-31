@@ -24,11 +24,8 @@ jobs:
         with:
           gradle-version: '8.11.1'
 
-      - name: Assemble debug and release APKs
-        run: gradle assembleDebug assembleRelease --no-daemon --stacktrace
-
-      - name: Run Night Ops unit tests (JVM gate)
-        run: gradle testDebugUnitTest --no-daemon --stacktrace
+      - name: Assemble APKs and run Night Ops unit tests (single Gradle invocation)
+        run: gradle assembleDebug assembleRelease testDebugUnitTest --no-daemon --console=plain --stacktrace
 
       - name: Publish unit test summary
         if: always()
@@ -38,6 +35,12 @@ jobs:
           find app/build/test-results -name "TEST-*.xml" -exec cp {} test-logs/ \; 2>/dev/null || true
           echo "--- Night Ops test results ---"
           grep -h "testsuite name" test-logs/*.xml 2>/dev/null | head -10 || echo "no test xml found"
+          grep -ho 'tests="[0-9]*" skipped="[0-9]*" failures="[0-9]*" errors="[0-9]*"' test-logs/*.xml 2>/dev/null || true
+          # fail the job if any test failed
+          if grep -lE 'failures="[1-9]|errors="[1-9]' test-logs/*.xml >/dev/null 2>&1; then
+            echo "UNIT TEST FAILURES PRESENT"; exit 1
+          fi
+          test -n "$(ls test-logs 2>/dev/null)" || { echo "no test xml produced"; exit 1; }
 
       - name: Verify APK outputs
         run: |

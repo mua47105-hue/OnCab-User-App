@@ -4,7 +4,23 @@
     android:width="1282dp"
     android:viewportWidth="1282"
     android:viewportHeight="497">
-    <path
-        android:fillColor="@drawable/_ic_rectangle_1__0_res_0x7f080007"
-        android:pathData="M0,96h1282v297h-1282z"/>
+    <path android:pathData="M0,96h1282v297h-1282z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="641.6"
+                android:centerY="380.5"
+                android:gradientRadius="284.5"
+                android:type="radial">
+                <item
+                    android:color="#ff6574ff"
+                    android:offset="0"/>
+                <item
+                    android:color="#c8ecb7ff"
+                    android:offset="0.5"/>
+                <item
+                    android:color="#00c971ff"
+                    android:offset="1"/>
+            </gradient>
+        </aapt:attr>
+    </path>
 </vector>

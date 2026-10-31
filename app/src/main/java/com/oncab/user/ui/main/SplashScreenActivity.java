@@ -92,7 +92,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                                 @Override
                                 public boolean onLoadFailed(@Nullable com.bumptech.glide.load.engine.GlideException e,
                                                             Object model,
-                                                            com.bumptech.glide.request.target.Target<android.graphics.drawable.Drawable> target,
+                                                            com.bumptech.glide.request.target.Target<android.graphics.drawable.Drawable> glideTarget,
                                                             boolean isFirstResource) {
                                     showBannerThenNavigate(null, target, timeout);
                                     return true;
@@ -101,7 +101,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                                 @Override
                                 public boolean onResourceReady(android.graphics.drawable.Drawable resource,
                                                                Object model,
-                                                               com.bumptech.glide.request.target.Target<android.graphics.drawable.Drawable> target,
+                                                               com.bumptech.glide.request.target.Target<android.graphics.drawable.Drawable> glideTarget,
                                                                com.bumptech.glide.load.DataSource dataSource,
                                                                boolean isFirstResource) {
                                     showBannerThenNavigate(url, target, timeout);

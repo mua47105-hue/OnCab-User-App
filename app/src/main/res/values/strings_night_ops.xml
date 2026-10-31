@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- OnCab Night Ops user-visible strings. Content contract mirrors the
+     Gauntlet-approved proto3_night_ops design (4/4 SHIP). -->
+<resources>
+    <!-- Header -->
+    <string name="night_ops_title">Night Ops</string>
+    <string name="night_ops_app_bar">OnCab Kolkata</string>
+    <string name="night_ops_gps_locked">GPS LOCKED</string>
+    <string name="night_ops_gps_cd">GPS locked</string>
+    <string name="night_ops_security_cd">Security status</string>
+    <string name="night_ops_banner_night_mode">Night mode · %1$d cabs near Park St</string>
+    <string name="night_ops_safeguard">24/7 SafeGuard Active</string>
+    <string name="night_ops_safeguard_cd">24/7 SafeGuard active</string>
+
+    <!-- Map -->
+    <string name="night_ops_map_cd">Night map of central Kolkata</string>
+    <string name="night_ops_recenter_cd">Recenter map</string>
+    <string name="night_ops_park_st">Park St</string>
+    <string name="night_ops_esplanade">Esplanade</string>
+    <string name="night_ops_trip_km">%1$s km</string>
+    <!-- Canvas cartography glyphs -->
+    <string name="night_ops_map_river">HOOGHLY RIVER</string>
+    <string name="night_ops_map_esplanade_cr">ESPLANADE CR</string>
+    <string name="night_ops_map_park_street">PARK STREET</string>
+    <string name="night_ops_map_camac_st">CAMAC ST</string>
+    <string name="night_ops_map_maidan_green">MAIDAN GREEN</string>
+    <string name="night_ops_map_chip_pickup">PICKUP: PARK ST</string>
+    <string name="night_ops_map_chip_esplanade">ESPLANADE</string>
+
+    <!-- Home panel (before requesting) -->
+    <string name="night_ops_home_heading">Where to tonight?</string>
+    <string name="night_ops_home_sub">Locked fares all night. No surge, no surprises.</string>
+    <string name="night_ops_request_btn">Request Night Ride</string>
+    <string name="night_ops_fare_preview">Park St → Esplanade · ₹%1$d locked</string>
+
+    <!-- Ride confirmed -->
+    <string name="night_ops_confirmed_title">Your ride is confirmed</string>
+    <string name="night_ops_confirmed_sub">Driver Sanjib is heading to your pickup spot</string>
+    <string name="night_ops_night_shield">Night Shield</string>
+    <string name="night_ops_night_shield_cd">Night Shield protection on</string>
+    <string name="night_ops_otp_label">START TRIP OTP</string>
+    <string name="night_ops_otp_sub">Share with driver upon boarding</string>
+    <string name="night_ops_otp_cd">Start trip OTP %1$s</string>
+
+    <!-- Driver card -->
+    <string name="night_ops_driver_name">Sanjib Das</string>
+    <string name="night_ops_driver_rating">4.9</string>
+    <string name="night_ops_driver_vehicle">White Hyundai Aura</string>
+    <string name="night_ops_driver_plate">WB 02 AB 4412</string>
+    <string name="night_ops_driver_photo_cd">Driver photo</string>
+    <string name="night_ops_driver_verified_cd">Verified driver</string>
+    <string name="night_ops_call_cd">Call driver</string>
+    <string name="night_ops_chat_cd">Message driver</string>
+    <string name="night_ops_arriving_label">ARRIVING IN</string>
+    <string name="night_ops_eta_minutes">%1$d min</string>
+    <string name="night_ops_eta_timer">%1$02d:%2$02d</string>
+    <string name="night_ops_driver_arrived">ARRIVED · SHARE OTP</string>
+    <string name="night_ops_arrived_now">Now</string>
+    <string name="night_ops_start_trip_btn">Enter OTP to start trip</string>
+
+    <!-- OTP dialog -->
+    <string name="night_ops_otp_dialog_title">Enter start-trip OTP</string>
+    <string name="night_ops_otp_dialog_sub">Ask Sanjib for the 4-digit code</string>
+    <string name="night_ops_otp_dialog_verify">Verify &amp; start</string>
+    <string name="night_ops_otp_dialog_cancel">Cancel</string>
+    <string name="night_ops_otp_wrong">Wrong code · %1$d attempts left</string>
+    <string name="night_ops_otp_locked">Too many attempts. Call OnCab support.</string>
+
+    <!-- Fare row -->
+    <string name="night_ops_fare_amount">₹%1$d</string>
+    <string name="night_ops_fare_locked">· Locked Fare</string>
+    <string name="night_ops_fare_no_surge">No night surge applied</string>
+    <string name="night_ops_wallet">Wallet (₹%1$d)</string>
+
+    <!-- Actions -->
+    <string name="night_ops_share_trip">Share trip</string>
+    <string name="night_ops_sos">SOS</string>
+    <string name="night_ops_share_cd">Share trip status</string>
+
+    <!-- In-trip / complete -->
+    <string name="night_ops_on_trip">On trip to Esplanade</string>
+    <string name="night_ops_km_to_go">%1$s km to go</string>
+    <string name="night_ops_complete_title">Trip completed</string>
+    <string name="night_ops_complete_sub">Hope you had a safe night ride</string>
+    <string name="night_ops_fare_charged">₹%1$d charged to Wallet (₹%2$d left)</string>
+    <string name="night_ops_rate_heading">Rate your driver</string>
+    <string name="night_ops_rate_submit">Submit rating</string>
+    <string name="night_ops_rate_done">Back to Night Ops</string>
+    <string name="night_ops_star_cd">Rate %1$d star</string>
+
+    <!-- Cancel -->
+    <string name="night_ops_cancel_title">Cancel night ride?</string>
+    <string name="night_ops_cancel_msg">Your locked fare is free to cancel before boarding.</string>
+    <string name="night_ops_cancel_yes">Cancel ride</string>
+    <string name="night_ops_cancel_no">Keep ride</string>
+    <string name="night_ops_cancelled">Night ride cancelled</string>
+
+    <!-- SOS -->
+    <string name="night_ops_sos_title">Emergency SOS</string>
+    <string name="night_ops_sos_countdown">Calling SafeGuard in %1$d…</string>
+    <string name="night_ops_sos_expired">SafeGuard alerted · share your location now</string>
+    <string name="night_ops_sos_cancel">Cancel</string>
+    <string name="night_ops_sos_cancelled">SOS cancelled</string>
+    <string name="night_ops_sos_police">Call Police 100</string>
+    <string name="night_ops_sos_share_loc">Share location SMS</string>
+    <string name="night_ops_sos_body">OnCab Night SOS: I need help. My last known location: %1$s</string>
+    <string name="night_ops_sos_cd">Open emergency SOS</string>
+
+    <!-- Chat -->
+    <string name="night_ops_chat_title">Message Sanjib</string>
+    <string name="night_ops_chat_q1">I\'m at the north corner of Park St</string>
+    <string name="night_ops_chat_q2">Please call when you arrive</string>
+    <string name="night_ops_chat_q3">Coming in 2 minutes</string>
+    <string name="night_ops_chat_sent">Sent to driver ✓</string>
+
+    <!-- Share trip -->
+    <string name="night_ops_share_subject">OnCab Night Ops — live trip</string>
+    <string name="night_ops_share_body">I\'m on a night ride: Park St → Esplanade. Cab WB 02 AB 4412 (Sanjib Das, ★4.9). Fare locked at ₹160. Stay safe — track with me.</string>
+    <string name="night_ops_share_via">Share trip via</string>
+
+    <!-- Bottom nav -->
+    <string name="night_ops_nav_home">Home</string>
+    <string name="night_ops_nav_rides">Rides</string>
+    <string name="night_ops_nav_bus">Bus Rides</string>
+    <string name="night_ops_nav_profile">Profile</string>
+    <string name="night_ops_nav_connect">Connect</string>
+    <string name="night_ops_nav_home_cd">Home</string>
+
+    <!-- Home entry card (main app) -->
+    <string name="night_ops_entry_title">Night Ops</string>
+    <string name="night_ops_entry_sub">Locked fares · SafeGuard on</string>
+    <string name="night_ops_entry_cd">Open Night Ops mode</string>
+</resources>

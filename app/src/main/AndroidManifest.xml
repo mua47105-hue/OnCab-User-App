@@ -193,6 +193,12 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name="com.oncab.user.ui.nightops.NightOpsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.OnCab.NightOps" />
+
         <service
             android:name="com.oncab.user.Service.LocationService"
             android:enabled="true"

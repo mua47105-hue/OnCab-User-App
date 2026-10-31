@@ -298,6 +298,65 @@
                                 style="@style/Widget.MaterialComponents.Button.TextButton"/>
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </com.google.android.material.card.MaterialCardView>
+                    <!-- OnCab Night Ops entry card (new module) -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvNightOps"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/night_surface_lowest"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="3dp">
+                        <LinearLayout
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="12dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <FrameLayout
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/bg_night_icon_box">
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:layout_gravity="center"
+                                    android:contentDescription="@string/night_ops_entry_cd"
+                                    android:src="@drawable/ic_night_moon"
+                                    app:tint="@color/night_amber"/>
+                            </FrameLayout>
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp">
+                                <TextView
+                                    android:textSize="16sp"
+                                    android:textColor="@color/night_on_surface"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/night_ops_entry_title"
+                                    android:fontFamily="@font/roboto_bold"/>
+                                <TextView
+                                    android:textSize="12sp"
+                                    android:textColor="@color/night_on_surface_variant"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/night_ops_entry_sub"
+                                    android:fontFamily="@font/roboto"/>
+                            </LinearLayout>
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:contentDescription="@null"
+                                android:src="@drawable/ic_night_arrow_fwd"
+                                app:tint="@color/night_amber"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvRentType"
                         android:layout_width="match_parent"

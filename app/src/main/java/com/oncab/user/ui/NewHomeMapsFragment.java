@@ -2,6 +2,7 @@ package com.oncab.user.ui;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -29,6 +30,7 @@ import com.oncab.user.MainActivity;
 import com.oncab.user.R;
 import com.oncab.user.Utils.Constants;
 import com.oncab.user.databinding.FragmentNewHomeMapsBinding;
+import com.oncab.user.ui.nightops.NightOpsActivity;
 
 /**
  * Faithful port of NewHomeMapsFragment.kt — Kolkata-centered Google Map,
@@ -83,6 +85,10 @@ public class NewHomeMapsFragment extends Fragment implements OnMapReadyCallback 
 
         binding.llCenterPin.setOnClickListener(v ->
                 Navigation.findNavController(v).navigate(R.id.navigation_destination));
+
+        // Night Ops module entry
+        binding.cvNightOps.setOnClickListener(v ->
+                startActivity(new Intent(requireContext(), NightOpsActivity.class)));
 
         maybeShowWelcomeReward();
     }

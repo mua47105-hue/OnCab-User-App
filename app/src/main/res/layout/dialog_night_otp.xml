@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Night Ops start-trip OTP verification dialog. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_otp_dialog"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvOtpDialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/night_ops_otp_dialog_title"
+        android:textColor="@color/night_on_surface"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvOtpDialogSub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/night_ops_otp_dialog_sub"
+        android:textColor="@color/night_on_surface_variant"
+        android:textSize="12sp" />
+
+    <com.chaos.view.PinView
+        android:id="@+id/pinView"
+        style="@style/PinWidget.PinView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:cursorVisible="false"
+        android:inputType="number"
+        app:itemSpacing="8dp"
+        android:maxLength="4"
+        android:textColor="@color/night_amber"
+        android:textSize="20sp"
+        android:fontFamily="@font/roboto_bold"
+        app:lineColor="@color/night_outline_variant"
+        app:lineWidth="2dp"
+        app:viewType="rectangle" />
+
+    <TextView
+        android:id="@+id/tvOtpDialogError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_medium"
+        android:textColor="@color/night_sos_red"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnOtpCancel"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_night_icon_box"
+            android:fontFamily="@font/roboto_medium"
+            android:stateListAnimator="@null"
+            android:text="@string/night_ops_otp_dialog_cancel"
+            android:textColor="@color/night_on_surface"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btnOtpVerify"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_night_ops_btn_amber"
+            android:fontFamily="@font/roboto_bold"
+            android:stateListAnimator="@null"
+            android:text="@string/night_ops_otp_dialog_verify"
+            android:textColor="@color/night_on_amber"
+            android:textSize="13sp" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- OnCab Night Ops module palette.
+     Every value is taken from the Gauntlet-approved design (proto3_night_ops,
+     4/4 SHIP) and verified against pixel measurements of proto3_night_ops.png
+     (see scripts/nightops_bar_scan.json). Do not add colors outside this file. -->
+<resources>
+    <!-- Surfaces (measured #0c0e0e/#1a1c1c/#1e2020 at 2x AA = declared below) -->
+    <color name="night_background">#121314</color>
+    <color name="night_surface_lowest">#0d0e0f</color>
+    <color name="night_surface_low">#1b1c1d</color>
+    <color name="night_surface">#1f2021</color>
+    <color name="night_surface_high">#292a2b</color>
+    <color name="night_surface_variant">#343536</color>
+
+    <!-- Text -->
+    <color name="night_on_surface">#e3e2e3</color>
+    <color name="night_on_surface_variant">#d6c4ac</color>
+    <color name="night_on_surface_faint">#8a9194</color>
+
+    <!-- Outlines -->
+    <color name="night_outline">#9e8e78</color>
+    <color name="night_outline_variant">#514532</color>
+
+    <!-- Brand amber (measured #f39101 exact) -->
+    <color name="night_amber">#F39101</color>
+    <color name="night_amber_soft">#ffd79b</color>
+    <color name="night_amber_border">#99F39101</color>
+    <color name="night_on_amber">#1f1400</color>
+    <color name="night_amber_chip_bg">#33F39101</color>
+
+    <!-- Success green (measured #05e777 exact) -->
+    <color name="night_green">#05e777</color>
+    <color name="night_green_text">#7dffa2</color>
+    <color name="night_green_on">#00210b</color>
+    <color name="night_green_chip_bg">#2605E777</color>
+    <color name="night_green_ring">#4D05E777</color>
+
+    <!-- SOS red (measured #d32f2f exact) -->
+    <color name="night_sos_red">#D32F2F</color>
+    <color name="night_sos_red_deep">#B71C1C</color>
+    <color name="night_sos_red_soft">#33D32F2F</color>
+    <color name="night_sos_on">#ffffff</color>
+
+    <!-- Night cartography -->
+    <color name="night_road_minor">#191a1b</color>
+    <color name="night_road_mid">#1b1c1d</color>
+    <color name="night_road_main">#1f2021</color>
+    <color name="night_road_broad">#252627</color>
+    <color name="night_road_thin">#18191a</color>
+    <color name="night_river">#141c22</color>
+    <color name="night_river_stroke">#1f2c37</color>
+    <color name="night_river_label">#2d3d4a</color>
+    <color name="night_maidan">#111713</color>
+    <color name="night_maidan_stroke">#19251c</color>
+    <color name="night_map_label">#514532</color>
+    <color name="night_map_label_dim">#39393a</color>
+    <!-- Derived alphas + map marker tints (kept here so no drawable hardcodes color) -->
+    <color name="night_white_a10">#1AFFFFFF</color>
+    <color name="night_nav_active_bg">#26F39101</color>
+    <color name="night_pill_bg">#F01F2021</color>
+    <color name="night_pill_stroke">#4D514532</color>
+    <color name="night_fare_row_bg">#D10D0E0F</color>
+    <color name="night_fare_row_stroke">#20514532</color>
+    <color name="night_icon_box_stroke">#339E8E78</color>
+    <color name="night_map_cab_core">#ffb300</color>
+    <color name="night_map_cab_ring">#ffba38</color>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Night Ops theme: forced dark regardless of system setting, surfaces from
+     the approved proto3 palette. -->
+<resources>
+    <style name="Theme.OnCab.NightOps" parent="Theme.CabBookDriver">
+        <item name="android:windowBackground">@color/night_background</item>
+        <item name="android:statusBarColor">@color/night_surface_lowest</item>
+        <item name="android:navigationBarColor">@color/night_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="colorPrimary">@color/night_amber</item>
+        <item name="colorOnPrimary">@color/night_on_amber</item>
+        <item name="colorSurface">@color/night_surface</item>
+        <item name="colorOnSurface">@color/night_on_surface</item>
+        <item name="android:colorBackground">@color/night_background</item>
+    </style>
+</resources>

@@ -27,6 +27,18 @@ jobs:
       - name: Assemble debug and release APKs
         run: gradle assembleDebug assembleRelease --no-daemon --stacktrace
 
+      - name: Run Night Ops unit tests (JVM gate)
+        run: gradle testDebugUnitTest --no-daemon --stacktrace
+
+      - name: Publish unit test summary
+        if: always()
+        run: |
+          set -e
+          mkdir -p test-logs
+          find app/build/test-results -name "TEST-*.xml" -exec cp {} test-logs/ \; 2>/dev/null || true
+          echo "--- Night Ops test results ---"
+          grep -h "testsuite name" test-logs/*.xml 2>/dev/null | head -10 || echo "no test xml found"
+
       - name: Verify APK outputs
         run: |
           set -e
@@ -37,6 +49,38 @@ jobs:
           done
           echo "--- APK binary check ---"
           file app/build/outputs/apk/release/*.apk
+
+      - name: Verify Night Ops inside the APK
+        run: |
+          set -e
+          APK=$(ls app/build/outputs/apk/release/*.apk | head -1)
+          echo "Checking $APK for Night Ops artifacts"
+          # 1. DEX must contain the NightOps classes
+          unzip -p "$APK" 'classes*.dex' > /tmp/all.dex
+          for cls in NightOpsActivity NightOpsStateMachine NightMapView SosCountdown NightOpsConfig; do
+            grep -q "Lcom/oncab/user/ui/nightops/${cls};" /tmp/all.dex \
+              || { echo "FAIL: class $cls missing from dex"; exit 1; }
+            echo "ok: class $cls in dex"
+          done
+          # 2. APK must package the night layouts/drawables (values/*.xml compile
+          #    into resources.arsc, so only count binary res entries here)
+          NIGHT_ENTRIES=$(unzip -l "$APK" | grep -c "night")
+          echo "packaged night resource entries: $NIGHT_ENTRIES"
+          test "$NIGHT_ENTRIES" -ge 30 || { echo "FAIL: too few night resources packaged"; exit 1; }
+          unzip -l "$APK" | grep -q "layout/activity_night_ops" \
+            || { echo "FAIL: activity_night_ops layout missing"; exit 1; }
+          echo "ok: layout activity_night_ops packaged"
+          # 3. resources.arsc must carry the night strings and colors
+          unzip -p "$APK" resources.arsc > /tmp/resources.arsc
+          for s in "Night Ops" "WB 02 AB 4412" "Locked Fare" "SafeGuard" "START TRIP OTP"; do
+            grep -q "$s" /tmp/resources.arsc || { echo "FAIL: string '$s' missing from arsc"; exit 1; }
+            echo "ok: string '$s' in resources.arsc"
+          done
+          # 4. android binary manifest check: theme + activity present
+          unzip -p "$APK" AndroidManifest.xml > /tmp/am.bin
+          grep -q "nightops" /tmp/am.bin || { echo "FAIL: NightOpsActivity missing from manifest"; exit 1; }
+          echo "ok: NightOpsActivity registered in binary manifest"
+          echo "NIGHT OPS APK VERIFICATION: ALL PASS"
 
       - name: Upload APK artifacts
         uses: actions/upload-artifact@v4
@@ -86,6 +130,9 @@ jobs:
             - Auth flow: otp-send → user-login → user-create → home
             - Home map, ride history (All/City/Outstation/Rental/Delivery),
               bus trips (Upcoming/Completed/Cancelled), profile & settings
+            - **New: Night Ops module** — full night-mode ride flow (live dark map,
+              OTP 5731 boarding, locked fare ₹160, driver card, SOS with 3s
+              cancel countdown), unit-tested (testDebugUnitTest) and APK-verified
             - Built on GitHub Actions (Gradle 8.11.1, AGP 8.9.2, JDK 17)
 
             **Install:** download `OnCab-v1.10.25-release.apk` and enable

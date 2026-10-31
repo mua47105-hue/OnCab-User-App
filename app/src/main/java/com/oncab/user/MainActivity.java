@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.oncab.user.Utils.Constants;
 import com.oncab.user.databinding.ActivityMainBinding;
 import com.oncab.user.databinding.AppBarMainBinding;
+import com.oncab.user.ui.nightops.NightOpsActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -42,6 +43,36 @@ public class MainActivity extends AppCompatActivity {
         setDefaultView();
         loadHeaderProfile();
         setDrawerMenu();
+        routeFromNightOps(getIntent());
+    }
+
+    /**
+     * Night Ops bottom-nav deep link: the activity can be launched with an
+     * extra carrying a top-level destination id to route to after restore.
+     * Also handles redelivery via onNewIntent (CLEAR_TOP|SINGLE_TOP path).
+     */
+    private void routeFromNightOps(Intent intent) {
+        if (intent == null) {
+            return;
+        }
+        int dest = intent.getIntExtra(
+                NightOpsActivity.EXTRA_NAV_DESTINATION, -1);
+        if (dest <= 0) {
+            return;
+        }
+        intent.removeExtra(NightOpsActivity.EXTRA_NAV_DESTINATION);
+        try {
+            navController.navigate(dest);
+        } catch (IllegalArgumentException e) {
+            // destination not on the current graph; ignore and stay on home
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        routeFromNightOps(intent);
     }
 
     private void setDefaultView() {

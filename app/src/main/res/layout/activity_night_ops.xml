@@ -1,0 +1,1291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- OnCab Night Ops — full ride flow screen.
+     Visual contract: Gauntlet-approved proto3_night_ops design (4/4 SHIP). -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/night_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- ===== Header: app bar + Night Ops banner ===== -->
+        <LinearLayout
+            android:id="@+id/nightHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/night_surface_lowest"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="20dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="8dp">
+
+                <FrameLayout
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_night_icon_box">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/night_ops_app_bar"
+                        android:src="@drawable/ic_night_taxi"
+                        app:tint="@color/night_amber" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tvNightAppBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/night_ops_app_bar"
+                    android:textColor="@color/night_amber_soft"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:id="@+id/gpsPill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_night_pill"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
+
+                    <View
+                        android:id="@+id/gpsDot"
+                        android:layout_width="6dp"
+                        android:layout_height="6dp"
+                        android:background="@drawable/bg_verified_dot" />
+
+                    <TextView
+                        android:id="@+id/tvGps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:letterSpacing="0.06"
+                        android:text="@string/night_ops_gps_locked"
+                        android:textColor="@color/night_green_text"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btnSecurity"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_marginStart="8dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/night_ops_security_cd"
+                    android:src="@drawable/ic_night_security"
+                    app:tint="@color/night_amber" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/nightBannerRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/night_surface_low"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="20dp"
+                android:paddingTop="7dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="7dp">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:id="@+id/bannerDotPing"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:background="@drawable/bg_verified_dot"
+                        android:alpha="0.75" />
+
+                    <View
+                        android:id="@+id/bannerDot"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:background="@drawable/bg_verified_dot" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tvNightBanner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/night_ops_banner_night_mode"
+                    android:textColor="@color/night_on_surface"
+                    android:textSize="12sp"
+                    tools:text="Night mode · 12 cabs near Park St" />
+
+                <LinearLayout
+                    android:id="@+id/safeguardChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_night_pill_green"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="7dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp">
+
+                    <ImageView
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:contentDescription="@string/night_ops_safeguard_cd"
+                        android:src="@drawable/ic_night_safeguard" />
+
+                    <TextView
+                        android:id="@+id/tvSafeguard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/night_ops_safeguard"
+                        android:textColor="@color/night_green_text"
+                        android:textSize="10sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ===== Night map canvas ===== -->
+        <com.oncab.user.ui.nightops.NightMapView
+            android:id="@+id/nightMap"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:contentDescription="@string/night_ops_map_cd"
+            app:layout_constraintBottom_toTopOf="@+id/nightSheet"
+            app:layout_constraintTop_toBottomOf="@+id/nightHeader" />
+
+        <!-- Trip pill floating over the map -->
+        <LinearLayout
+            android:id="@+id/tripPill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/bg_night_pill"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            app:layout_constraintBottom_toTopOf="@+id/nightSheet"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/bg_verified_dot" />
+
+            <TextView
+                android:id="@+id/tvTripFrom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/night_ops_park_st"
+                android:textColor="@color/night_on_surface"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginStart="6dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_night_arrow_fwd"
+                app:tint="@color/night_amber" />
+
+            <TextView
+                android:id="@+id/tvTripTo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/night_ops_esplanade"
+                android:textColor="@color/night_on_surface"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvTripKm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/night_ops_trip_km"
+                android:textColor="@color/night_amber_soft"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btnRecenter"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/bg_night_pill"
+            android:contentDescription="@string/night_ops_recenter_cd"
+            android:src="@drawable/ic_baseline_my_location_24"
+            app:tint="@color/night_amber"
+            app:layout_constraintBottom_toTopOf="@+id/nightSheet"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- ===== Bottom sheet deck ===== -->
+        <LinearLayout
+            android:id="@+id/nightSheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_night_sheet"
+            android:elevation="10dp"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/nightNavBar">
+
+            <View
+                android:id="@+id/dragHandle"
+                android:layout_width="48dp"
+                android:layout_height="6dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_night_drag_handle" />
+
+            <FrameLayout
+                android:id="@+id/panelContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- == Panel A: night home (pre-request) == -->
+                <LinearLayout
+                    android:id="@+id/panelHome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvHomeHeading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/night_ops_home_heading"
+                        android:textColor="@color/night_on_surface"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/tvHomeSub"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/night_ops_home_sub"
+                        android:textColor="@color/night_on_surface_variant"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvFarePreview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:background="@drawable/bg_night_fare_row"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/night_ops_fare_preview"
+                        android:textColor="@color/night_amber_soft"
+                        android:textSize="13sp" />
+
+                    <Button
+                        android:id="@+id/btnRequest"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="14dp"
+                        android:background="@drawable/bg_night_ops_btn_amber"
+                        android:fontFamily="@font/roboto_bold"
+                        android:letterSpacing="0.04"
+                        android:stateListAnimator="@null"
+                        android:text="@string/night_ops_request_btn"
+                        android:textColor="@color/night_on_amber"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- == Panel B: ride confirmed (design ground truth) == -->
+                <LinearLayout
+                    android:id="@+id/panelConfirmed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:background="@drawable/bg_verified_dot">
+
+                            <ImageView
+                                android:id="@+id/ivConfirmedCheck"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="@null"
+                                android:src="@drawable/ic_night_check"
+                                app:tint="@color/night_green_on" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvConfirmedTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text="@string/night_ops_confirmed_title"
+                                android:textColor="@color/night_on_surface"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/tvConfirmedSub"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/night_ops_confirmed_sub"
+                                android:textColor="@color/night_on_surface_variant"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/shieldChip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/bg_night_pill_green"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="9dp"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp">
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:contentDescription="@string/night_ops_night_shield_cd"
+                                android:src="@drawable/ic_night_shield_check" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text="@string/night_ops_night_shield"
+                                android:textColor="@color/night_green_text"
+                                android:textSize="10sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- OTP security card -->
+                    <LinearLayout
+                        android:id="@+id/otpCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:background="@drawable/bg_night_card"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="14dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/ivOtpKey"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:contentDescription="@null"
+                                    android:src="@drawable/ic_night_key"
+                                    app:tint="@color/night_amber" />
+
+                                <TextView
+                                    android:id="@+id/tvOtpLabel"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="6dp"
+                                    android:fontFamily="@font/roboto_bold"
+                                    android:letterSpacing="0.08"
+                                    android:text="@string/night_ops_otp_label"
+                                    android:textColor="@color/night_amber"
+                                    android:textSize="10sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvOtpSub"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/night_ops_otp_sub"
+                                android:textColor="@color/night_on_surface_variant"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/otpTile1"
+                                android:layout_width="36dp"
+                                android:layout_height="44dp"
+                                android:background="@drawable/bg_otp_tile"
+                                android:fontFamily="@font/roboto_bold"
+                                android:gravity="center"
+                                android:importantForAccessibility="no"
+                                android:textColor="@color/night_amber"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/otpTile2"
+                                android:layout_width="36dp"
+                                android:layout_height="44dp"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/bg_otp_tile"
+                                android:fontFamily="@font/roboto_bold"
+                                android:gravity="center"
+                                android:importantForAccessibility="no"
+                                android:textColor="@color/night_amber"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/otpTile3"
+                                android:layout_width="36dp"
+                                android:layout_height="44dp"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/bg_otp_tile"
+                                android:fontFamily="@font/roboto_bold"
+                                android:gravity="center"
+                                android:importantForAccessibility="no"
+                                android:textColor="@color/night_amber"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/otpTile4"
+                                android:layout_width="36dp"
+                                android:layout_height="44dp"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/bg_otp_tile"
+                                android:fontFamily="@font/roboto_bold"
+                                android:gravity="center"
+                                android:importantForAccessibility="no"
+                                android:textColor="@color/night_amber"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Driver & vehicle card -->
+                    <LinearLayout
+                        android:id="@+id/driverCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_night_card"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="14dp">
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/driverAvatar"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:contentDescription="@string/night_ops_driver_photo_cd"
+                                android:src="@drawable/avatar_1"
+                                app:civ_border_color="@color/night_amber"
+                                app:civ_border_width="2dp" />
+
+                            <View
+                                android:id="@+id/verifiedDot"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_gravity="bottom|end"
+                                android:background="@drawable/bg_verified_dot" />
+
+                            <ImageView
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:layout_gravity="bottom|end"
+                                android:contentDescription="@string/night_ops_driver_verified_cd"
+                                android:src="@drawable/ic_night_check"
+                                app:tint="@color/night_green_on" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tvDriverName"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_bold"
+                                    android:text="@string/night_ops_driver_name"
+                                    android:textColor="@color/night_on_surface"
+                                    android:textSize="16sp" />
+
+                                <LinearLayout
+                                    android:id="@+id/ratingChip"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:background="@drawable/bg_amber_rating_chip"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:paddingStart="6dp"
+                                    android:paddingEnd="6dp"
+                                    android:paddingTop="2dp"
+                                    android:paddingBottom="2dp">
+
+                                    <ImageView
+                                        android:layout_width="12dp"
+                                        android:layout_height="12dp"
+                                        android:contentDescription="@null"
+                                        android:src="@drawable/ic_night_star"
+                                        app:tint="@color/night_amber" />
+
+                                    <TextView
+                                        android:id="@+id/tvDriverRating"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="3dp"
+                                        android:fontFamily="@font/roboto_bold"
+                                        android:text="@string/night_ops_driver_rating"
+                                        android:textColor="@color/night_amber_soft"
+                                        android:textSize="11sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvDriverVehicle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/night_ops_driver_vehicle"
+                                android:textColor="@color/night_on_surface_variant"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tvDriverPlate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/bg_night_plate_chip"
+                                android:fontFamily="@font/roboto_bold"
+                                android:letterSpacing="0.1"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingTop="3dp"
+                                android:paddingBottom="3dp"
+                                android:text="@string/night_ops_driver_plate"
+                                android:textColor="@color/night_on_surface"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvEtaLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_bold"
+                                android:letterSpacing="0.08"
+                                android:text="@string/night_ops_arriving_label"
+                                android:textColor="@color/night_amber"
+                                android:textSize="10sp" />
+
+                            <TextView
+                                android:id="@+id/tvEtaValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text="@string/night_ops_eta_minutes"
+                                android:textColor="@color/night_amber"
+                                android:textSize="22sp"
+                                tools:text="4 min" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:orientation="horizontal">
+
+                                <ImageButton
+                                    android:id="@+id/btnCallDriver"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:background="@drawable/bg_night_icon_box"
+                                    android:contentDescription="@string/night_ops_call_cd"
+                                    android:src="@drawable/ic_baseline_call_24"
+                                    app:tint="@color/night_on_surface" />
+
+                                <ImageButton
+                                    android:id="@+id/btnChatDriver"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_marginStart="8dp"
+                                    android:background="@drawable/bg_night_icon_box"
+                                    android:contentDescription="@string/night_ops_chat_cd"
+                                    android:src="@drawable/ic_night_chat"
+                                    app:tint="@color/night_on_surface" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Start-trip action (visible once driver arrived) -->
+                    <Button
+                        android:id="@+id/btnStartTrip"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_night_ops_btn_amber"
+                        android:fontFamily="@font/roboto_bold"
+                        android:stateListAnimator="@null"
+                        android:text="@string/night_ops_start_trip_btn"
+                        android:textColor="@color/night_on_amber"
+                        android:textSize="13sp"
+                        android:visibility="gone" />
+
+                    <!-- Fare lock & payment row -->
+                    <LinearLayout
+                        android:id="@+id/fareRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_night_fare_row"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="10dp"
+                        android:paddingTop="9dp"
+                        android:paddingBottom="9dp">
+
+                        <FrameLayout
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="@drawable/bg_amber_rating_chip">
+
+                            <ImageView
+                                android:id="@+id/ivFareLock"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="@null"
+                                android:src="@drawable/ic_night_lock"
+                                app:tint="@color/night_amber" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tvFareAmount"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_bold"
+                                    android:text="@string/night_ops_fare_amount"
+                                    android:textColor="@color/night_on_surface"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/tvFareLocked"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:fontFamily="@font/roboto_bold"
+                                    android:text="@string/night_ops_fare_locked"
+                                    android:textColor="@color/night_green_text"
+                                    android:textSize="10sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvFareNoSurge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/night_ops_fare_no_surge"
+                                android:textColor="@color/night_on_surface_variant"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/walletChip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_night_card"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="9dp"
+                            android:paddingEnd="8dp"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp">
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:contentDescription="@null"
+                                android:src="@drawable/ic_night_wallet"
+                                app:tint="@color/night_amber" />
+
+                            <TextView
+                                android:id="@+id/tvWallet"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:fontFamily="@font/roboto_medium"
+                                android:text="@string/night_ops_wallet"
+                                android:textColor="@color/night_on_surface"
+                                android:textSize="11sp" />
+
+                            <View
+                                android:layout_width="6dp"
+                                android:layout_height="6dp"
+                                android:layout_marginStart="6dp"
+                                android:background="@drawable/bg_verified_dot" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Dual tactical actions -->
+                    <LinearLayout
+                        android:id="@+id/rowActions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnShareTrip"
+                            android:layout_width="0dp"
+                            android:layout_height="46dp"
+                            android:layout_marginEnd="6dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_night_ops_btn_amber"
+                            android:drawableStart="@drawable/ic_baseline_share_24"
+                            android:drawableTint="@color/night_on_amber"
+                            android:drawablePadding="-22dp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:gravity="center"
+                            android:stateListAnimator="@null"
+                            android:text="@string/night_ops_share_trip"
+                            android:textColor="@color/night_on_amber"
+                            android:textSize="14sp" />
+
+                        <Button
+                            android:id="@+id/btnSos"
+                            android:layout_width="0dp"
+                            android:layout_height="46dp"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_night_ops_btn_sos"
+                            android:fontFamily="@font/roboto_bold"
+                            android:stateListAnimator="@null"
+                            android:text="@string/night_ops_sos"
+                            android:textColor="@color/night_sos_on"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- == Panel C: trip complete == -->
+                <LinearLayout
+                    android:id="@+id/panelComplete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <FrameLayout
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/bg_verified_dot">
+
+                        <ImageView
+                            android:id="@+id/ivCompleteCheck"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_night_check"
+                            app:tint="@color/night_green_on" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tvCompleteTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/night_ops_complete_title"
+                        android:textColor="@color/night_on_surface"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tvCompleteSub"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/night_ops_complete_sub"
+                        android:textColor="@color/night_on_surface_variant"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvFareCharged"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_night_fare_row"
+                        android:fontFamily="@font/roboto_medium"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
+                        android:text="@string/night_ops_fare_charged"
+                        android:textColor="@color/night_green_text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvRateHeading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/night_ops_rate_heading"
+                        android:textColor="@color/night_on_surface"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/star1"
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="@string/night_ops_star_cd"
+                            android:src="@drawable/ic_night_star_border"
+                            app:tint="@color/night_amber" />
+
+                        <ImageButton
+                            android:id="@+id/star2"
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginStart="6dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="@string/night_ops_star_cd"
+                            android:src="@drawable/ic_night_star_border"
+                            app:tint="@color/night_amber" />
+
+                        <ImageButton
+                            android:id="@+id/star3"
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginStart="6dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="@string/night_ops_star_cd"
+                            android:src="@drawable/ic_night_star_border"
+                            app:tint="@color/night_amber" />
+
+                        <ImageButton
+                            android:id="@+id/star4"
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginStart="6dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="@string/night_ops_star_cd"
+                            android:src="@drawable/ic_night_star_border"
+                            app:tint="@color/night_amber" />
+
+                        <ImageButton
+                            android:id="@+id/star5"
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:layout_marginStart="6dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="@string/night_ops_star_cd"
+                            android:src="@drawable/ic_night_star_border"
+                            app:tint="@color/night_amber" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btnRateSubmit"
+                        android:layout_width="match_parent"
+                        android:layout_height="46dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_night_ops_btn_amber"
+                        android:fontFamily="@font/roboto_bold"
+                        android:stateListAnimator="@null"
+                        android:text="@string/night_ops_rate_submit"
+                        android:textColor="@color/night_on_amber"
+                        android:textSize="14sp" />
+
+                    <Button
+                        android:id="@+id/btnRateDone"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/bg_night_icon_box"
+                        android:fontFamily="@font/roboto_medium"
+                        android:stateListAnimator="@null"
+                        android:text="@string/night_ops_rate_done"
+                        android:textColor="@color/night_on_surface"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+
+        <!-- ===== Night bottom navigation ===== -->
+        <LinearLayout
+            android:id="@+id/nightNavBar"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:background="@color/night_surface_lowest"
+            android:elevation="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:id="@+id/navHome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_nav_active"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="@string/night_ops_nav_home_cd"
+                    android:src="@drawable/ic_night_home"
+                    app:tint="@color/night_amber" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/night_ops_nav_home"
+                    android:textColor="@color/night_amber"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/navRides"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="@string/night_ops_nav_rides"
+                    android:src="@drawable/ic_night_commute"
+                    app:tint="@color/night_on_surface_variant" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/night_ops_nav_rides"
+                    android:textColor="@color/night_on_surface_variant"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/navBus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="@string/night_ops_nav_bus"
+                    android:src="@drawable/ic_night_bus"
+                    app:tint="@color/night_on_surface_variant" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/night_ops_nav_bus"
+                    android:textColor="@color/night_on_surface_variant"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/navProfile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="@string/night_ops_nav_profile"
+                    android:src="@drawable/ic_night_person"
+                    app:tint="@color/night_on_surface_variant" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/night_ops_nav_profile"
+                    android:textColor="@color/night_on_surface_variant"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/navConnect"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="@string/night_ops_nav_connect"
+                    android:src="@drawable/ic_night_hub"
+                    app:tint="@color/night_on_surface_variant" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/night_ops_nav_connect"
+                    android:textColor="@color/night_on_surface_variant"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- ===== SOS full-screen overlay ===== -->
+    <FrameLayout
+        android:id="@+id/sosOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/night_sos_red_deep"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingStart="28dp"
+            android:paddingEnd="28dp">
+
+            <FrameLayout
+                android:id="@+id/sosRingWrap"
+                android:layout_width="96dp"
+                android:layout_height="96dp">
+
+                <View
+                    android:id="@+id/sosRing"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:background="@drawable/bg_sos_ring" />
+
+                <ImageView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/night_ops_sos_cd"
+                    android:src="@drawable/ic_sos_alert"
+                    app:tint="@color/night_sos_on" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tvSosTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/night_ops_sos_title"
+                android:textColor="@color/night_sos_on"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvSosCountdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
+                android:text="@string/night_ops_sos_countdown"
+                android:textColor="@color/night_sos_on"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tvSosExpired"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:alpha="0.9"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="@string/night_ops_sos_expired"
+                android:textColor="@color/night_green_text"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnCancelSos"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/bg_night_icon_box"
+                android:fontFamily="@font/roboto_bold"
+                android:stateListAnimator="@null"
+                android:text="@string/night_ops_sos_cancel"
+                android:textColor="@color/night_sos_on"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btnCallPolice"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_night_ops_btn_sos"
+                android:fontFamily="@font/roboto_bold"
+                android:stateListAnimator="@null"
+                android:text="@string/night_ops_sos_police"
+                android:textColor="@color/night_sos_on"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btnShareSms"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_night_icon_box"
+                android:fontFamily="@font/roboto_medium"
+                android:stateListAnimator="@null"
+                android:text="@string/night_ops_sos_share_loc"
+                android:textColor="@color/night_sos_on"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

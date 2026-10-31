@@ -1,5 +1,6 @@
 package com.oncab.user.Utils;
 
+import com.oncab.user.Activity.PhoneValidation.OtpModel;
 import com.oncab.user.Model.BannerResponseModel;
 import com.oncab.user.Model.ProfileModel;
 import com.oncab.user.ui.bookinghistory.model.OrderListModel;

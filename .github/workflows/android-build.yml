@@ -83,9 +83,18 @@ jobs:
             grep -q "$s" /tmp/resources.arsc || { echo "FAIL: string '$s' missing from release arsc"; exit 1; }
             echo "ok: string '$s' in release resources.arsc"
           done
-          # 4. binary manifest: NightOpsActivity registered
+          # 4. binary manifest: NightOpsActivity registered (aapt2 if available,
+          #    else UTF-8 + UTF-16LE grep fallback)
           unzip -p "$RAPK" AndroidManifest.xml > /tmp/am.bin
-          grep -q "nightops" /tmp/am.bin || { echo "FAIL: NightOpsActivity missing from manifest"; exit 1; }
+          AAPT2=$(ls "$ANDROID_HOME"/build-tools/*/aapt2 2>/dev/null | sort -V | tail -1 || true)
+          if [ -n "$AAPT2" ]; then
+            "$AAPT2" dump xmltree --file AndroidManifest.xml "$RAPK" | grep -q "nightops" \
+              || { echo "FAIL: NightOpsActivity missing from manifest (aapt2)"; exit 1; }
+          else
+            { grep -qa "nightops" /tmp/am.bin \
+              || strings -e l /tmp/am.bin | grep -q "nightops"; } \
+              || { echo "FAIL: NightOpsActivity missing from manifest"; exit 1; }
+          fi
           echo "ok: NightOpsActivity registered in binary manifest"
           echo "NIGHT OPS APK VERIFICATION: ALL PASS"
 

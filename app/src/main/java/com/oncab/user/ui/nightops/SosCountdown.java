@@ -77,9 +77,11 @@ public final class SosCountdown {
         return secondsLeft;
     }
 
-    /** Cancels the countdown; a cancelled countdown cannot expire. */
+    /**
+     * Cancels the countdown; a cancelled countdown cannot expire and no longer
+     * advances. Remaining seconds stay frozen until the next start().
+     */
     public void cancel() {
         running = false;
-        secondsLeft = totalSeconds;
     }
 }

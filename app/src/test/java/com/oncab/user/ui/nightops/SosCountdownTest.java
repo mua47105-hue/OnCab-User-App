@@ -53,10 +53,14 @@ public class SosCountdownTest {
         sos.tick(sink); // 2 left
         sos.cancel();
         assertFalse(sos.isRunning());
-        while (sos.secondsLeft() > 0) {
+        // Bounded sweep: a cancelled countdown must never expire no matter how
+        // many ticks arrive (bound guards the JVM gate against a runaway loop).
+        for (int i = 0; i < 10; i++) {
             sos.tick(sink);
         }
         assertEquals("cancelled countdown must not expire", 0, expiries);
+        assertTrue("ticks after cancel must not advance the countdown",
+                sos.secondsLeft() <= 2);
     }
 
     @Test
@@ -69,6 +73,19 @@ public class SosCountdownTest {
         assertEquals(3, sos.secondsLeft());
         assertFalse(sos.isExpired());
         assertTrue(sos.isRunning());
+    }
+
+    @Test
+    public void cancelledThenRestartedRunsNormally() {
+        SosCountdown sos = new SosCountdown(3);
+        sos.start(sink);
+        sos.cancel();
+        sos.start(sink);
+        assertEquals(3, sos.secondsLeft());
+        assertEquals(2, sos.tick(sink));
+        assertEquals(1, sos.tick(sink));
+        assertEquals(0, sos.tick(sink));
+        assertEquals(1, expiries);
     }
 
     @Test(expected = IllegalArgumentException.class)

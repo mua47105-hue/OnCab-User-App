@@ -25,6 +25,7 @@ jobs:
           gradle-version: '8.11.1'
 
       - name: Assemble APKs and run Night Ops unit tests (single Gradle invocation)
+        timeout-minutes: 35
         run: gradle assembleDebug assembleRelease testDebugUnitTest --no-daemon --console=plain --stacktrace
 
       - name: Publish unit test summary

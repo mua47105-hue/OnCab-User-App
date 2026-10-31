@@ -39,6 +39,4 @@
         <attr name="hideLineWhenFilled" />
         <attr name="animationEnable" />
     </declare-styleable>
-
-    <attr name="pinViewStyle" format="reference" />
 </resources>

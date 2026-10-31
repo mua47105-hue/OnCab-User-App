@@ -40,11 +40,39 @@ app/src/main/
 │   ├── MainActivity             # drawer + bottom nav + nav host
 │   ├── Activity/…               # phone validation, OTP, profile completion
 │   ├── ui/…                     # home maps, booking, history, shuttle, account…
+│   ├── ui/nightops/…            # Night Ops module (see below)
 │   ├── Service/…                # FCM notifications, foreground location
 │   └── Utils/…                  # Retrofit WebService, constants, prefs
 ├── res/                         # 1,220 original resources (verbatim)
 └── …
 ```
+
+## Night Ops module (`ui/nightops`)
+
+A fully implemented night-mode ride flow, built from the Gauntlet-approved
+`proto3_night_ops` design (phase 3) with a pixel-verified palette
+(`res/values/colors_night_ops.xml`, measured against the approved PNG).
+
+- **Entry** — "Night Ops" card on the home map sheet opens the forced-dark
+  `NightOpsActivity` (`Theme.OnCab.NightOps`).
+- **Live night map** — `NightMapView` is a Canvas port of the approved
+  cartography: Hooghly river, Kolkata street grid, Maidan block, glowing
+  amber route (Park St → Esplanade via Chowringhee), pulsing pickup pin,
+  nearby cab dots and a live cab with headlight beams driving the route.
+- **Ride flow** — launches in the approved confirmed state: OTP `5731`
+  tiles, driver card (Sanjib Das ★4.9 · White Hyundai Aura · WB 02 AB 4412),
+  ARRIVING-IN ETA countdown, locked fare ₹160 (no night surge), Wallet
+  payment, Share trip (system chooser), SOS.
+- **Boarding** — driver "arrives" when the ETA elapses; start-trip OTP is
+  verified against the state machine with a 3-attempt lockout.
+- **SOS** — full-screen red overlay with a real 3-second cancel countdown
+  (`SosCountdown`), haptic on expiry, Call Police 100 (`ACTION_DIAL` only —
+  never auto-called) and share-location SMS. No dangerous permissions added.
+- **State machine** — `NightOpsStateMachine` (pure Java): confirmed →
+  arriving → arrived → in-trip → complete → rating; cancellation rules
+  enforced; covered by JUnit suites run in CI (`testDebugUnitTest`), plus
+  CI checks that the built APK actually contains the NightOps classes,
+  layouts and strings.
 
 ## Build locally
 

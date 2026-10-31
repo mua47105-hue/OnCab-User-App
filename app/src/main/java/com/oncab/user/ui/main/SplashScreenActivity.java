@@ -104,7 +104,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                                                                com.bumptech.glide.request.target.Target<android.graphics.drawable.Drawable> target,
                                                                com.bumptech.glide.load.DataSource dataSource,
                                                                boolean isFirstResource) {
-                                    showBannerThenNavigate(url, targetIntent, timeout);
+                                    showBannerThenNavigate(url, target, timeout);
                                     return true;
                                 }
                             })

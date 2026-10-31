@@ -72,7 +72,7 @@
         <item name="android:src">@null</item>
         <item name="android:scaleType">fitCenter</item>
         <item name="android:contentDescription">@null</item>
-        <item name="android:importantForAccessibility">2</item>
+        <item name="android:importantForAccessibility">no</item>
     </style>
     <style name="Base.MaterialAlertDialog.MaterialComponents.Title.Panel" parent="@android:style/Widget">
         <item name="android:paddingLeft">?attr/dialogPreferredPadding</item>
@@ -2042,7 +2042,7 @@
         <item name="listPreferredItemPaddingLeft">@dimen/abc_list_item_padding_horizontal_material</item>
         <item name="listPreferredItemPaddingRight">@dimen/abc_list_item_padding_horizontal_material</item>
         <item name="listPreferredItemPaddingStart">@dimen/abc_list_item_padding_horizontal_material</item>
-        <item name="panelBackground">?unknown_ref: 7f08005a</item>
+        <item name="panelBackground">@drawable/abc_menu_hardkey_panel_mtrl_mult</item>
         <item name="panelMenuListTheme">@style/Theme.AppCompat.CompactMenu</item>
         <item name="panelMenuListWidth">@dimen/abc_panel_menu_list_width</item>
         <item name="popupMenuStyle">@style/Widget.AppCompat.PopupMenu</item>
@@ -2187,7 +2187,7 @@
         <item name="listPreferredItemPaddingLeft">@dimen/abc_list_item_padding_horizontal_material</item>
         <item name="listPreferredItemPaddingRight">@dimen/abc_list_item_padding_horizontal_material</item>
         <item name="listPreferredItemPaddingStart">@dimen/abc_list_item_padding_horizontal_material</item>
-        <item name="panelBackground">?unknown_ref: 7f08005a</item>
+        <item name="panelBackground">@drawable/abc_menu_hardkey_panel_mtrl_mult</item>
         <item name="panelMenuListTheme">@style/Theme.AppCompat.CompactMenu</item>
         <item name="panelMenuListWidth">@dimen/abc_panel_menu_list_width</item>
         <item name="popupMenuStyle">@style/Widget.AppCompat.Light.PopupMenu</item>
@@ -2276,7 +2276,7 @@
         <item name="android:textColor">?attr/editTextColor</item>
         <item name="android:background">?attr/editTextBackground</item>
         <item name="android:dropDownSelector">?attr/listChoiceBackgroundIndicator</item>
-        <item name="android:popupBackground">?unknown_ref: 7f08005b</item>
+        <item name="android:popupBackground">@drawable/abc_popup_background_mtrl_mult</item>
         <item name="android:textCursorDrawable">@drawable/abc_text_cursor_material</item>
     </style>
     <style name="Base.V7.Widget.AppCompat.EditText" parent="@android:style/Widget.EditText">
@@ -2360,7 +2360,7 @@
     </style>
     <style name="Base.Widget.AppCompat.ActivityChooserView" parent="">
         <item name="android:gravity">center</item>
-        <item name="android:background">?unknown_ref: 7f08002a</item>
+        <item name="android:background">@drawable/abc_ab_share_pack_mtrl_alpha</item>
         <item name="divider">?attr/dividerVertical</item>
         <item name="dividerPadding">6dp</item>
         <item name="showDividers">middle</item>
@@ -2399,7 +2399,7 @@
         <item name="showText">false</item>
         <item name="switchPadding">@dimen/abc_switch_padding</item>
         <item name="switchTextAppearance">@style/TextAppearance.AppCompat.Widget.Switch</item>
-        <item name="track">?unknown_ref: 7f08006c</item>
+        <item name="track">@drawable/abc_switch_track_mtrl_alpha</item>
     </style>
     <style name="Base.Widget.AppCompat.DrawerArrowToggle" parent="@style/Base.Widget.AppCompat.DrawerArrowToggle.Common">
         <item name="barLength">18dp</item>
@@ -2416,8 +2416,8 @@
     <style name="Base.Widget.AppCompat.DropDownItem.Spinner" parent="@android:style/Widget.Material.DropDownItem.Spinner">
     </style>
     <style name="Base.Widget.AppCompat.EditText" parent="@android:style/Widget.Material.EditText">
-        <item name="android:breakStrategy">0</item>
-        <item name="android:hyphenationFrequency">0</item>
+        <item name="android:breakStrategy">simple</item>
+        <item name="android:hyphenationFrequency">none</item>
     </style>
     <style name="Base.Widget.AppCompat.ImageButton" parent="@android:style/Widget.Material.ImageButton">
     </style>
@@ -2475,7 +2475,7 @@
     </style>
     <style name="Base.Widget.AppCompat.SearchView" parent="@android:style/Widget">
         <item name="closeIcon">@drawable/abc_ic_clear_material</item>
-        <item name="commitIcon">?unknown_ref: 7f080042</item>
+        <item name="commitIcon">@drawable/abc_ic_commit_search_api_mtrl_alpha</item>
         <item name="goIcon">@drawable/abc_ic_go_search_api_material</item>
         <item name="layout">@layout/abc_search_view</item>
         <item name="queryBackground">@drawable/abc_textfield_search_material</item>
@@ -2501,8 +2501,8 @@
     <style name="Base.Widget.AppCompat.Spinner.Underlined" parent="@android:style/Widget.Material.Spinner.Underlined">
     </style>
     <style name="Base.Widget.AppCompat.TextView" parent="@android:style/Widget.Material.TextView">
-        <item name="android:breakStrategy">1</item>
-        <item name="android:hyphenationFrequency">0</item>
+        <item name="android:breakStrategy">high_quality</item>
+        <item name="android:hyphenationFrequency">none</item>
     </style>
     <style name="Base.Widget.AppCompat.TextView.SpinnerItem" parent="@android:style/Widget.Material.TextView.SpinnerItem">
     </style>
@@ -2904,7 +2904,7 @@
     <style name="MaterialAlertDialog.Material3.Body.Text.CenterStacked" parent="@style/MaterialAlertDialog.Material3.Body.Text">
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:textAlignment">1</item>
+        <item name="android:textAlignment">gravity</item>
     </style>
     <style name="MaterialAlertDialog.Material3.Title.Icon" parent="@style/MaterialAlertDialog.MaterialComponents.Title.Icon">
         <item name="android:theme">@style/ThemeOverlay.MaterialAlertDialog.Material3.Title.Icon</item>
@@ -2922,7 +2922,7 @@
     <style name="MaterialAlertDialog.Material3.Title.Panel" parent="@style/MaterialAlertDialog.MaterialComponents.Title.Panel">
     </style>
     <style name="MaterialAlertDialog.Material3.Title.Panel.CenterStacked" parent="@style/MaterialAlertDialog.Material3.Title.Panel">
-        <item name="android:orientation">1</item>
+        <item name="android:orientation">vertical</item>
     </style>
     <style name="MaterialAlertDialog.Material3.Title.Text" parent="@style/MaterialAlertDialog.MaterialComponents.Title.Text">
         <item name="android:textAppearance">?attr/textAppearanceHeadlineSmall</item>
@@ -2931,7 +2931,7 @@
     <style name="MaterialAlertDialog.Material3.Title.Text.CenterStacked" parent="@style/MaterialAlertDialog.Material3.Title.Text">
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:textAlignment">1</item>
+        <item name="android:textAlignment">gravity</item>
     </style>
     <style name="MaterialAlertDialog.MaterialComponents" parent="@style/AlertDialog.AppCompat">
         <item name="android:layout">@layout/mtrl_alert_dialog</item>
@@ -2954,13 +2954,13 @@
         <item name="android:headerDayOfMonthTextAppearance">@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog.Picker.Date.Header.Text.Day</item>
         <item name="android:headerYearTextAppearance">@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog.Picker.Date.Header.Text</item>
         <item name="android:calendarTextColor">?attr/colorOnSurface</item>
-        <item name="android:datePickerMode">2</item>
+        <item name="android:datePickerMode">calendar</item>
         <item name="backgroundInsetBottom">@dimen/mtrl_alert_dialog_picker_background_inset</item>
         <item name="backgroundInsetTop">@dimen/mtrl_alert_dialog_picker_background_inset</item>
         <item name="shapeAppearance">?attr/shapeAppearanceMediumComponent</item>
     </style>
     <style name="MaterialAlertDialog.MaterialComponents.Picker.Date.Spinner" parent="@android:style/Widget.DeviceDefault.DatePicker">
-        <item name="android:datePickerMode">1</item>
+        <item name="android:datePickerMode">calendar</item>
         <item name="backgroundInsetBottom">@dimen/mtrl_alert_dialog_picker_background_inset</item>
         <item name="backgroundInsetTop">@dimen/mtrl_alert_dialog_picker_background_inset</item>
         <item name="shapeAppearance">?attr/shapeAppearanceMediumComponent</item>
@@ -2974,18 +2974,18 @@
         <item name="android:layout_gravity">center</item>
     </style>
     <style name="MaterialAlertDialog.MaterialComponents.Title.Panel" parent="@style/Base.MaterialAlertDialog.MaterialComponents.Title.Panel">
-        <item name="android:orientation">0</item>
+        <item name="android:orientation">horizontal</item>
     </style>
     <style name="MaterialAlertDialog.MaterialComponents.Title.Panel.CenterStacked" parent="@style/Base.MaterialAlertDialog.MaterialComponents.Title.Panel">
-        <item name="android:orientation">1</item>
+        <item name="android:orientation">vertical</item>
     </style>
     <style name="MaterialAlertDialog.MaterialComponents.Title.Text" parent="@style/Base.MaterialAlertDialog.MaterialComponents.Title.Text">
         <item name="android:layout_gravity">start</item>
-        <item name="android:textAlignment">5</item>
+        <item name="android:textAlignment">viewEnd</item>
     </style>
     <style name="MaterialAlertDialog.MaterialComponents.Title.Text.CenterStacked" parent="@style/Base.MaterialAlertDialog.MaterialComponents.Title.Text">
         <item name="android:layout_gravity">center</item>
-        <item name="android:textAlignment">4</item>
+        <item name="android:textAlignment">viewStart</item>
     </style>
     <style name="MessengerButton" parent="">
         <item name="android:clickable">true</item>
@@ -3030,19 +3030,19 @@
         <item name="android:textColor">#ffffff</item>
     </style>
     <style name="MessengerButtonText.Blue.Large" parent="@style/MessengerButtonText.Blue">
-        <item name="android:drawableLeft">?unknown_ref: 7f08019f</item>
+        <item name="android:drawableLeft">@drawable/com_facebook_button_icon</item>
     </style>
     <style name="MessengerButtonText.Blue.Small" parent="@style/MessengerButtonText.Blue">
-        <item name="android:drawableLeft">?unknown_ref: 7f0801a1</item>
+        <item name="android:drawableLeft">@drawable/com_facebook_button_icon</item>
     </style>
     <style name="MessengerButtonText.White" parent="@style/MessengerButtonText">
         <item name="android:textColor">#0084ff</item>
     </style>
     <style name="MessengerButtonText.White.Large" parent="@style/MessengerButtonText.White">
-        <item name="android:drawableLeft">?unknown_ref: 7f08019e</item>
+        <item name="android:drawableLeft">@drawable/com_facebook_button_icon</item>
     </style>
     <style name="MessengerButtonText.White.Small" parent="@style/MessengerButtonText.White">
-        <item name="android:drawableLeft">?unknown_ref: 7f0801a0</item>
+        <item name="android:drawableLeft">@drawable/com_facebook_button_icon</item>
     </style>
     <style name="PinWidget" parent="">
     </style>
@@ -3136,7 +3136,7 @@
         <item name="cornerSizeTopRight">24dp</item>
     </style>
     <style name="RtlOverlay.DialogWindowTitle.AppCompat" parent="@style/Base.DialogWindowTitle.AppCompat">
-        <item name="android:textAlignment">5</item>
+        <item name="android:textAlignment">viewEnd</item>
     </style>
     <style name="RtlOverlay.Widget.AppCompat.ActionBar.TitleItem" parent="@android:style/Widget">
         <item name="android:layout_gravity">start</item>
@@ -3152,18 +3152,18 @@
         <item name="android:layout_marginStart">16dp</item>
     </style>
     <style name="RtlOverlay.Widget.AppCompat.PopupMenuItem.Shortcut" parent="@android:style/Widget">
-        <item name="android:textAlignment">6</item>
+        <item name="android:textAlignment">center</item>
         <item name="android:layout_marginStart">16dp</item>
     </style>
     <style name="RtlOverlay.Widget.AppCompat.PopupMenuItem.SubmenuArrow" parent="@android:style/Widget">
         <item name="android:layout_marginStart">8dp</item>
     </style>
     <style name="RtlOverlay.Widget.AppCompat.PopupMenuItem.Text" parent="@android:style/Widget">
-        <item name="android:textAlignment">5</item>
+        <item name="android:textAlignment">viewEnd</item>
         <item name="android:layout_alignParentStart">true</item>
     </style>
     <style name="RtlOverlay.Widget.AppCompat.PopupMenuItem.Title" parent="@android:style/Widget">
-        <item name="android:textAlignment">5</item>
+        <item name="android:textAlignment">viewEnd</item>
         <item name="android:layout_marginStart">16dp</item>
     </style>
     <style name="RtlOverlay.Widget.AppCompat.Search.DropDown" parent="@android:style/Widget">
@@ -5594,7 +5594,7 @@
         <item name="android:includeFontPadding">false</item>
         <item name="android:maxLength">2</item>
         <item name="android:inputType">number</item>
-        <item name="android:textAlignment">4</item>
+        <item name="android:textAlignment">viewStart</item>
         <item name="android:paddingStart">0dp</item>
         <item name="android:paddingEnd">0dp</item>
     </style>
@@ -6437,7 +6437,7 @@
         <item name="android:layout_marginRight">@dimen/mtrl_snackbar_message_margin_horizontal</item>
         <item name="android:maxLines">@integer/design_snackbar_text_max_lines</item>
         <item name="android:alpha">@dimen/material_emphasis_high_type</item>
-        <item name="android:textAlignment">5</item>
+        <item name="android:textAlignment">viewEnd</item>
     </style>
     <style name="Widget.MaterialComponents.TabLayout" parent="@style/Widget.Design.TabLayout">
         <item name="android:background">?attr/colorSurface</item>
@@ -6524,7 +6524,7 @@
         <item name="android:layout_height">48dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
-        <item name="android:textAlignment">4</item>
+        <item name="android:textAlignment">viewStart</item>
         <item name="backgroundTint">@color/material_timepicker_button_background</item>
         <item name="shapeAppearanceOverlay">?attr/shapeAppearanceMediumComponent</item>
         <item name="strokeColor">@color/material_timepicker_button_stroke</item>
@@ -6538,7 +6538,7 @@
     <style name="Widget.MaterialComponents.TimePicker.Display" parent="@style/Widget.MaterialComponents.Chip.Choice">
         <item name="android:textAppearance">?attr/textAppearanceHeadline3</item>
         <item name="android:textSize">56dp</item>
-        <item name="android:textAlignment">4</item>
+        <item name="android:textAlignment">viewStart</item>
         <item name="ensureMinTouchTargetSize">false</item>
         <item name="materialThemeOverlay">@style/ThemeOverlay.MaterialComponents.TimePicker.Display</item>
         <item name="shapeAppearanceOverlay">?attr/shapeAppearanceMediumComponent</item>
@@ -6565,7 +6565,7 @@
         <item name="android:includeFontPadding">false</item>
         <item name="android:maxLength">2</item>
         <item name="android:inputType">number</item>
-        <item name="android:textAlignment">4</item>
+        <item name="android:textAlignment">viewStart</item>
         <item name="android:paddingStart">0dp</item>
         <item name="android:paddingEnd">0dp</item>
     </style>

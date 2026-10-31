@@ -61,7 +61,7 @@ public class AccountFragment extends Fragment {
         }
 
         binding.backBtn.setOnClickListener(v ->
-                requireActivity().onBackPressedDispatcher.onBackPressed());
+                requireActivity().getOnBackPressedDispatcher().onBackPressed());
         binding.cardSupport.setOnClickListener(v ->
                 startActivity(new Intent(requireContext(), SupportActivity.class)));
         binding.cardPayment.setOnClickListener(v ->

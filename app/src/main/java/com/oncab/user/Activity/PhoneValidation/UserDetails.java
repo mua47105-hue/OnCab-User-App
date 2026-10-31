@@ -64,7 +64,9 @@ public class UserDetails extends AppCompatActivity implements View.OnClickListen
                 String path = copyToCache(data);
                 if (path != null) {
                     selectedPhotoPath = path;
-                    binding.profileImageContainer.setImageURI(data.getData());
+                    com.bumptech.glide.Glide.with(this).load(data.getData())
+                            .placeholder(R.drawable.avatar_1)
+                            .into(binding.imageView49);
                 }
             } catch (Exception ignored) {
             }

@@ -57,31 +57,34 @@ jobs:
       - name: Verify Night Ops inside the APK
         run: |
           set -e
-          APK=$(ls app/build/outputs/apk/release/*.apk | head -1)
-          echo "Checking $APK for Night Ops artifacts"
-          # 1. DEX must contain the NightOps classes
-          unzip -p "$APK" 'classes*.dex' > /tmp/all.dex
+          RAPK=$(ls app/build/outputs/apk/release/*.apk | head -1)
+          DAPK=$(ls app/build/outputs/apk/debug/*.apk | head -1)
+          echo "Checking release=$RAPK debug=$DAPK for Night Ops artifacts"
+          # 1. Release DEX must contain the NightOps classes
+          unzip -p "$RAPK" 'classes*.dex' > /tmp/all.dex
           for cls in NightOpsActivity NightOpsStateMachine NightMapView SosCountdown NightOpsConfig; do
             grep -q "Lcom/oncab/user/ui/nightops/${cls};" /tmp/all.dex \
               || { echo "FAIL: class $cls missing from dex"; exit 1; }
             echo "ok: class $cls in dex"
           done
-          # 2. APK must package the night layouts/drawables (values/*.xml compile
-          #    into resources.arsc, so only count binary res entries here)
-          NIGHT_ENTRIES=$(unzip -l "$APK" | grep -c "night")
-          echo "packaged night resource entries: $NIGHT_ENTRIES"
+          # 2. Debug APK keeps full res paths (release APKs get AGP path
+          #    shortening), so count night resources + layout there
+          NIGHT_ENTRIES=$(unzip -l "$DAPK" | grep -c "night")
+          echo "packaged night resource entries (debug): $NIGHT_ENTRIES"
           test "$NIGHT_ENTRIES" -ge 30 || { echo "FAIL: too few night resources packaged"; exit 1; }
-          unzip -l "$APK" | grep -q "layout/activity_night_ops" \
+          unzip -l "$DAPK" | grep -q "layout/activity_night_ops" \
             || { echo "FAIL: activity_night_ops layout missing"; exit 1; }
-          echo "ok: layout activity_night_ops packaged"
-          # 3. resources.arsc must carry the night strings and colors
-          unzip -p "$APK" resources.arsc > /tmp/resources.arsc
+          unzip -l "$DAPK" | grep -q "layout/dialog_night_otp" \
+            || { echo "FAIL: dialog_night_otp layout missing"; exit 1; }
+          echo "ok: night layouts packaged"
+          # 3. resources.arsc must carry the night strings (both variants)
+          unzip -p "$RAPK" resources.arsc > /tmp/resources.arsc
           for s in "Night Ops" "WB 02 AB 4412" "Locked Fare" "SafeGuard" "START TRIP OTP"; do
-            grep -q "$s" /tmp/resources.arsc || { echo "FAIL: string '$s' missing from arsc"; exit 1; }
-            echo "ok: string '$s' in resources.arsc"
+            grep -q "$s" /tmp/resources.arsc || { echo "FAIL: string '$s' missing from release arsc"; exit 1; }
+            echo "ok: string '$s' in release resources.arsc"
           done
-          # 4. android binary manifest check: theme + activity present
-          unzip -p "$APK" AndroidManifest.xml > /tmp/am.bin
+          # 4. binary manifest: NightOpsActivity registered
+          unzip -p "$RAPK" AndroidManifest.xml > /tmp/am.bin
           grep -q "nightops" /tmp/am.bin || { echo "FAIL: NightOpsActivity missing from manifest"; exit 1; }
           echo "ok: NightOpsActivity registered in binary manifest"
           echo "NIGHT OPS APK VERIFICATION: ALL PASS"

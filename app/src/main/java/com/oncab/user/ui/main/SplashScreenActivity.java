@@ -94,7 +94,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                                                             Object model,
                                                             com.bumptech.glide.request.target.Target<android.graphics.drawable.Drawable> target,
                                                             boolean isFirstResource) {
-                                    showBannerThenNavigate(null, targetIntent, timeout);
+                                    showBannerThenNavigate(null, target, timeout);
                                     return true;
                                 }
 
@@ -110,7 +110,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                             })
                             .into(binding.ivSplashBanner);
                 } else {
-                    showBannerThenNavigate(null, targetIntent, timeout);
+                    showBannerThenNavigate(null, target, timeout);
                 }
             }
 

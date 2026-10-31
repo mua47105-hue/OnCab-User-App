@@ -31,7 +31,7 @@ public class ShuttleTripsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         binding.ivBack.setOnClickListener(v -> {
             if (getActivity() != null) {
-                requireActivity().onBackPressedDispatcher.onBackPressed();
+                requireActivity().getOnBackPressedDispatcher().onBackPressed();
             }
         });
         binding.emptyState.setVisibility(View.VISIBLE);
